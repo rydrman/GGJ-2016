@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,8 +11,8 @@ public class Organization : MonoBehaviour
 
 	public Organization ()
 	{
-		Topic[] topics = Topic.GetValues (Topic);
-		foreach(Topic t in topics) {
+		m_stances = new Dictionary<Topic, int> ();
+		foreach(Topic t in Enum.GetValues(typeof(Topic))){
 			m_stances [t] = 0;
 		}
 	}
