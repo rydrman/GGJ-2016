@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-
-struct DecisionOption
+[System.Serializable]
+public class DecisionOption : MonoBehaviour
 {
-	string description;
-	Dictionary<Topic, int> effect;
+	public string description;
+	public Dictionary<Topic, int> effect;
 }
 

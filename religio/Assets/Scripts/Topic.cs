@@ -1,22 +1,22 @@
 ﻿using System;
+using UnityEngine;
 
-public class Topic {
+[System.Serializable]
+public class Topic : MonoBehaviour {
 
 	static uint next_uid = 0;
 
 	uint m_uid;
-	string m_name;
 	int m_value = 0;
 
-	Topic(string name) {
+	Topic() {
 		m_uid = next_uid++;
-		m_name = name;
 		value = 0;
 	}
 
-	public string name {
+	public uint uid {
 		get {
-			return m_name;
+			return m_uid;
 		}
 	}
 

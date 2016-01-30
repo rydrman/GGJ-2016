@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 class Decision : MonoBehaviour {
 
 	public List<DecisionOption> options;
