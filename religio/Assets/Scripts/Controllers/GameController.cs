@@ -65,11 +65,15 @@ public class GameController : MonoBehaviour {
 
 		//TODO newspapers
 		foreach(City city in gameState.cities) {
+			//pick a topic at random
+			Topic topic = TopicUtil.Random ();
+			//get the value of that topic
 			//for now pick a random newspaper for each city
 			DecisionDefinition def = NewspaperDecisions.GetRandom ();
 			GameObject paper = Instantiate (prefabs.newspaper);
 			Dictionary<string, string> values = new Dictionary<string, string>();
 			values["CityName"] = city.name;
+			values ["Topic"] = TopicUtil.ToString (topic);
 			paper.GetComponent<NewspaperDecision>().Define(def, values);
 			set.newspapers.Add (paper);
 		}

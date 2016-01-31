@@ -24,10 +24,50 @@ public static class TopicUtil {
 				return Topic.Business;
 			case 'F':
 				return Topic.Freedom;
-			case 'W':
-				return Topic.Welfare;
+		case 'W':
+			return Topic.Welfare;
 			default:
 				return Topic.Education;
 		}
+	}
+
+	public static string ToString(Topic topic){
+		switch(topic) {
+		case Topic.Business:
+			return "Business";
+		case Topic.Culture: 
+			return "Culture";
+		case Topic.Diplomacy:
+			return "Diplomacy";
+		case Topic.Education:
+			return "Education";
+		case Topic.Freedom:
+			return "Freedom";
+		case Topic.Welfare:
+			return "Welfare";
+		default:
+			return "default TopicUtil.ToString";
+		}
+		
+	}
+
+	public static Topic Random() {
+		float val = UnityEngine.Random.value;
+		if(val < 1 / 6) {
+			return Topic.Business;
+		}
+		else if(val < 2 / 6) {
+			return Topic.Culture;
+		}
+		else if(val < 3 / 6) {
+			return Topic.Diplomacy;
+		}
+		else if (val < 4 / 6) {
+			return Topic.Education;
+		}
+		else if(val < 5 / 6) {
+			return Topic.Freedom;
+		}
+		return Topic.Welfare;
 	}
 }
