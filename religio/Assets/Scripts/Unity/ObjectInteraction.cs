@@ -21,7 +21,7 @@ public class ObjectInteraction : MonoBehaviour {
 		m_root = transform.Find("Root").gameObject;
 		m_anim = m_root.GetComponent<Animator>();
 		m_focalpoint = GameObject.Find("FocalPoint").transform;
-		m_childcollider = (m_root.GetComponentsInChildren<Collider>());
+		m_childcolliders = (m_root.GetComponentsInChildren<Collider>());
 						   // .gameObject.GetComponent<Collider>());
 		m_focused = false;
 	}
