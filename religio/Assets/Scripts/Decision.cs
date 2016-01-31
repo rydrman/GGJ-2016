@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 [System.Serializable]
 class Decision : MonoBehaviour {
 
-	public List<DecisionOption> options;
+	public DecisionOption[] options = new DecisionOption[3];
 
 	string m_title;
 	DecisionOption m_choice;
 
 	public Decision( ) {
-		options = new List<DecisionOption> ();
 	}
 
 	public DecisionOption choice{ 
@@ -20,7 +19,7 @@ class Decision : MonoBehaviour {
 	}
 
 	public void MakeDecision(DecisionOption option) {
-		if (!options.Contains(option)) {
+		if (-1 == Array.IndexOf(options, option)) {
 			return;
 		}
 		m_choice = option;
