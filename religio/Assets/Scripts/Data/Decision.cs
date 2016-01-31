@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public struct DecisionDefinition {
+public class DecisionDefinition {
 	public string title;
 	public int minLevel;
 	public int maxLevel;

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [Serializable]
-public class DecisionOption : MonoBehaviour
+public class DecisionOption
 {
 	public string description;
 	public int value;

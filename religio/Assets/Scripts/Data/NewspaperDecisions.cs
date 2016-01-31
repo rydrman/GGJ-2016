@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -13,8 +14,16 @@ public static class NewspaperDecisions {
 
 	static public DecisionDefinition GetRandom() {
 		Load ();
-		System.Random rand = new System.Random ((int)DateTime.Now.Ticks);
-		return allDecisions [rand.Next (allDecisions.Count)];
+		return allDecisions [UnityEngine.Random.Range(0, allDecisions.Count)];
+	}
+	static public DecisionDefinition GetRandomForTopic(Topic topic) {
+		Load ();
+		List<DecisionDefinition> options = allDecisions.Where( d => d.topic == topic ).ToList();
+		if(options.Count == 0) {
+			return null;
+		}
+		return options [UnityEngine.Random.Range(0, options.Count)];
+
 	}
 
 	static void Load() {
