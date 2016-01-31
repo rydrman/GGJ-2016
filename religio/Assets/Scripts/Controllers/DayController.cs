@@ -16,6 +16,16 @@ public class DayController : MonoBehaviour {
 	}
 
 	public void Populate(DecisionSet decisions) {
+
+		GameObject sceneNewspaperRoot = GameObject.Find("NewspaperRoot");
+		if( sceneNewspaperRoot != null ) {
+			Debug.Log("Found transform");
+			Debug.Log(sceneNewspaperRoot);
+			newspaperRoot = sceneNewspaperRoot.transform;
+		} else {
+			return;
+		}
+
 		decisionSet = decisions;
 
 		Vector3 d = newspaperDelta;

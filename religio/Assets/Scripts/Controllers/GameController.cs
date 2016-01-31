@@ -38,6 +38,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void OnLevelWasLoaded(int level) {
+		if (level > 0) {
+			StartNextDay();
+		}
+	}
+
 	public void StartNextDay() {
 
 		//generate the decisions based on the current game state

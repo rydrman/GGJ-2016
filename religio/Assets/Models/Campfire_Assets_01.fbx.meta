@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 73d7eecd76c73ec4ab6a3b2e238bb17f
+timeCreated: 1454228215
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Banner_Pole
+    100002: //RootNode
+    100004: Fire
+    100006: Forest_plants
+    100008: Full_Tent
+    100010: Grass_blade
+    100012: Grass_Patch
+    100014: Lamp
+    100016: Lamp_Handle
+    100018: Leaf_big
+    100020: Log_Thick
+    100022: Log_thin
+    100024: Nail
+    100026: Rock
+    100028: Stick
+    100030: Tree_thick
+    100032: Tree_Thin
+    100034: Tree_Top1
+    100036: Wood_Plank
+    100038: Wood_Table
+    400000: Banner_Pole
+    400002: //RootNode
+    400004: Fire
+    400006: Forest_plants
+    400008: Full_Tent
+    400010: Grass_blade
+    400012: Grass_Patch
+    400014: Lamp
+    400016: Lamp_Handle
+    400018: Leaf_big
+    400020: Log_Thick
+    400022: Log_thin
+    400024: Nail
+    400026: Rock
+    400028: Stick
+    400030: Tree_thick
+    400032: Tree_Thin
+    400034: Tree_Top1
+    400036: Wood_Plank
+    400038: Wood_Table
+    2300000: Banner_Pole
+    2300002: Fire
+    2300004: Forest_plants
+    2300006: Full_Tent
+    2300008: Grass_blade
+    2300010: Grass_Patch
+    2300012: Lamp
+    2300014: Lamp_Handle
+    2300016: Leaf_big
+    2300018: Log_Thick
+    2300020: Log_thin
+    2300022: Nail
+    2300024: Rock
+    2300026: Stick
+    2300028: Tree_thick
+    2300030: Tree_Thin
+    2300032: Tree_Top1
+    2300034: Wood_Plank
+    2300036: Wood_Table
+    3300000: Banner_Pole
+    3300002: Fire
+    3300004: Forest_plants
+    3300006: Full_Tent
+    3300008: Grass_blade
+    3300010: Grass_Patch
+    3300012: Lamp
+    3300014: Lamp_Handle
+    3300016: Leaf_big
+    3300018: Log_Thick
+    3300020: Log_thin
+    3300022: Nail
+    3300024: Rock
+    3300026: Stick
+    3300028: Tree_thick
+    3300030: Tree_Thin
+    3300032: Tree_Top1
+    3300034: Wood_Plank
+    3300036: Wood_Table
+    4300000: Log_Thick
+    4300002: Stick
+    4300004: Rock
+    4300006: Log_thin
+    4300008: Wood_Plank
+    4300010: Grass_blade
+    4300012: Leaf_big
+    4300014: Nail
+    4300016: Wood_Table
+    4300018: Tree_Top1
+    4300020: Full_Tent
+    4300022: Fire
+    4300024: Banner_Pole
+    4300026: Grass_Patch
+    4300028: Forest_plants
+    4300030: Lamp
+    4300032: Lamp_Handle
+    4300034: Tree_thick
+    4300036: Tree_Thin
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

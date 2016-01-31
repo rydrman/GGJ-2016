@@ -6,7 +6,7 @@ public class ObjectInteraction : MonoBehaviour {
 	RaycastHit hit;
     Ray ray;
 
-    public float k_damping = 0.025f;
+    public float k_damping = 0.1f;
 
 	public Animator m_anim;
 	public GameObject m_root;
@@ -22,7 +22,9 @@ public class ObjectInteraction : MonoBehaviour {
 		m_restrot = transform.rotation;
 		m_root = transform.Find("Root").gameObject;
 		m_anim = m_root.GetComponent<Animator>();
-		m_focalpoint = GameObject.Find("FocalPoint").transform;
+		GameObject fpref = GameObject.Find("FocalPoint");
+		if (fpref)
+			m_focalpoint = fpref.transform;
 		m_childcolliders = (m_root.GetComponentsInChildren<Collider>());
 						   // .gameObject.GetComponent<Collider>());
 		m_focused = false;
@@ -43,7 +45,7 @@ public class ObjectInteraction : MonoBehaviour {
 				transform.rotation,
 				m_focalpoint.rotation,
 				k_damping);
-		} else {
+		} else if (m_focalpoint) {
 			transform.position = Vector3.Lerp(
 				transform.position,
 				m_restpos,
@@ -60,11 +62,13 @@ public class ObjectInteraction : MonoBehaviour {
 	}
 
 	public void Focus () {
+		Debug.Log("Clicked.");
 		m_focused = true;
 		m_anim.SetBool("focused", m_focused);
 	}
 
 	public void Defocus () {
+		Debug.Log("Clicked negation.");
 		m_focused = false;
 		m_anim.SetBool("focused", m_focused);
 	}

@@ -17,7 +17,7 @@ public class FeatureSelector : MonoBehaviour {
 	void Update () {
 	}
 
-	void SelectRandomFeature () {
+	public void SelectRandomFeature () {
 		int choice = Random.Range(0, features.Length);
 		int i = 0;
 		foreach (GameObject o in features) {
