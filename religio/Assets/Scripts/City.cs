@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Rand = System.Random;
 using System.Collections.Generic;
 using System;
@@ -12,5 +13,6 @@ public class City : Organization {
 		population = UnityEngine.Random.Range(10000, 200000);
 		name = StringListReader.GetRandom ("CityNames");
 		Randomize ();
+		gameObject.GetComponentInChildren<Text>().text = name;
 	}
 }

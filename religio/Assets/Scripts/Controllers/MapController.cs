@@ -20,5 +20,9 @@ public class MapController : MonoBehaviour {
 	void OnMouseDown () {
 		cityMenu.GetComponent<CityMenuController>().ToggleVisibility (false);
 		mapCamera.TriggerZoom (mapCamera.maxZoom);
+
+		foreach (GameObject go in GameObject.FindGameObjectsWithTag("CityName")) {
+			go.GetComponent<CanvasGroup> ().alpha = 1.0f;
+		}
 	}
 }
