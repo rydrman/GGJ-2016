@@ -12,3 +12,27 @@ I Agree 10
 No Comment 0
 That's dumb -10
 #
+Smart kid wins science award in [CityName]
+E
+0
+11
+You go Kid 2
+He's iight 1
+That's dumb -2
+#
+[PersonName] wants to nominate [PersonName] as one of your religious advisors
+D
+10
+100
+I Agree 2
+No Comment 5
+That's dumb -2
+#
+Donation collections spurn public response
+B
+0
+100
+Double minimum donation -1
+Increase minimum donation 4
+Maintain donations 0
+#
