@@ -4,35 +4,51 @@
 # MAX PROGRESSION (1-100)
 # OPTION TEXT int (ex I agree -10)
 # <- seperator
-From [CityName] about [PersonName]
+Genious Kid Wins Science Award in [CityName], Thanks Teachers
 E
 0
 100
-I Agree 10
-No Comment 0
-That's dumb -10
-#
-Smart kid wins science award in [CityName]
-E
-0
-11
 You go Kid 2
-He's iight 1
+He's a'ight 1
 That's dumb -2
 #
-[PersonName] wants to nominate [PersonName] as one of your religious advisors
-D
-10
+[CityName] To Offer Free Healthcare to Seniors
+W
+0
 100
-I Agree 2
-No Comment 5
-That's dumb -2
+We must always care for those in need 3
+Not really sure how that helps them... -1
+Nothing is Free! -6
 #
-Donation collections spurn public response
+[CityName] Announces [Season] Public Concert Series
+C
+0
+100
+It's always nice to see people coming together 3
+The church would love to be a sponsor 5
+We will be setting up a picket line -10
+#
+[CityName]'s Next Mayor to Abolish Public Referendums!
+D
+0
+100
+Good Riddance! -7
+Not really sure what the point was anyway -1
+That seems like something we should vote on 3
+#
+New Corporate Tax Breaks For [CityName] Come Into Effect This [Month]
 B
 0
 100
-Double minimum donation -1
-Increase minimum donation 4
-Maintain donations 0
+Be sure to donate to the church! 1
+They already do so much for our economy 4
+They are still paying taxes?! Enough's Enough! 10
+#
+[TimeOfDay] Curfew Declared in [CityName]
+B
+0
+100
+I hope there's a good reason for this 2
+That should be extended to 24/7! -10
+Everyone be sure to follow the law! -2
 #

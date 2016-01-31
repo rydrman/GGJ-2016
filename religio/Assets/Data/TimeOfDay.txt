@@ -1,0 +1,6 @@
+﻿Daytime
+Nightime
+Morning
+Evening
+Afternoon
+Overnight
