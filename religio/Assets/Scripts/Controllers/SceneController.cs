@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SceneController : MonoBehaviour {
+
+	public int dayScene = 1;
+
 	SceneController(){
 	}
 
@@ -11,5 +15,6 @@ public class SceneController : MonoBehaviour {
 
 	public void ShowDay() { 
 		//TODO switch the scene view
+		SceneManager.LoadScene(dayScene);
 	}
 }

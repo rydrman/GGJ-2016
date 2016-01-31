@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
 	
 	public int m_scene;
+	public GameController m_gm;
 
 	public void SetScene(UnityEngine.UI.Dropdown dropdown) {
 		m_scene = dropdown.value;
@@ -13,6 +14,7 @@ public class SceneLoader : MonoBehaviour {
 
 	public void LoadScene() {
 		Debug.Log("Loading...");
-		SceneManager.LoadScene(m_scene);
+		m_gm.BeginGame();
+		// SceneManager.LoadScene(m_scene);
 	}
 }

@@ -15,19 +15,19 @@ public class DayController : MonoBehaviour {
 	DayController() {
 	}
 
+	public void Update() {
+		// GameObject tmp = GameObject.Find("NewspaperRoot");
+		// Debug.Log(tmp);
+	}
+
 	public void Populate(DecisionSet decisions) {
 
-		GameObject sceneNewspaperRoot = GameObject.Find("NewspaperRoot");
-		if( sceneNewspaperRoot != null ) {
-			Debug.Log("Found transform");
-			Debug.Log(sceneNewspaperRoot);
-			newspaperRoot = sceneNewspaperRoot.transform;
-		} else {
-			return;
-		}
+		Debug.Log("Populating...");
 
 		decisionSet = decisions;
 
+		if (null == newspaperRoot)
+			newspaperRoot = GameObject.Find("NewspaperRoot").transform;
 		Vector3 d = newspaperDelta;
 		foreach( GameObject paper in decisions.newspapers ) {
 			paper.transform.SetParent (newspaperRoot);
@@ -37,6 +37,8 @@ public class DayController : MonoBehaviour {
 			d += newspaperDelta;
 		}
 
+		if (null == memoRoot)
+			memoRoot = GameObject.Find("MemoRoot").transform;
 		d = memoDelta;
 		foreach( GameObject memo in decisions.memos ) {
 			memo.transform.SetParent (memoRoot);
@@ -45,6 +47,8 @@ public class DayController : MonoBehaviour {
 			d += memoDelta;
 		}
 
+		if (null == docetRoot)
+			docetRoot = GameObject.Find("DocetRoot").transform;
 		d = docetDelta;
 		foreach( GameObject docet in decisions.docets ) {
 			docet.transform.SetParent (docetRoot);

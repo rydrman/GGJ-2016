@@ -36,3 +36,35 @@ Double minimum donation -1
 Increase minimum donation 4
 Maintain donations 0
 #
+[PersonName] wants to nominate [PersonName] as one of your religious advisors
+C
+10
+100
+I Agree 2
+No Comment 5
+That's dumb -2
+#
+Donation collections spurn public response
+B
+0
+100
+Double minimum donation -1
+Increase minimum donation 4
+Maintain donations 0
+#
+[PersonName] wants to nominate [PersonName] as one of your religious advisors
+F
+10
+100
+I Agree 2
+No Comment 5
+That's dumb -2
+#
+Donation collections spurn public response
+W
+0
+100
+Double minimum donation -1
+Increase minimum donation 4
+Maintain donations 0
+#

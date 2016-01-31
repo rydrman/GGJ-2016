@@ -16,12 +16,14 @@ public class GameController : MonoBehaviour {
 	float dayStart;
 	bool isDay = false;
 
+
 	GameController() {
 	}
 
-	public void Awake() {
+	public void Start() {
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
+		DontDestroyOnLoad (dayController);
 		DontDestroyOnLoad (cityController);
 		DontDestroyOnLoad (gameState);
 		DontDestroyOnLoad (prefabs);
@@ -29,30 +31,30 @@ public class GameController : MonoBehaviour {
 
 	public void Update() {
 
-		if (!isDay) {
-			StartNextDay ();
-		}
-
 		if(Time.time > dayStart + dayLengthSeconds) {
 			EndDay ();
 		}
 	}
 
+	public void BeginGame() {
+		sceneController.dayScene = 1;
+		StartNextDay();
+	}
+
 	public void OnLevelWasLoaded(int level) {
-		if (level > 0) {
-			StartNextDay();
-		}
+		if (isDay == true) {
+			//generate the decisions based on the current game state
+			DecisionSet decisions = GenerateDecisionSet ();
+			
+			// populate the scene with decisions
+			dayController.Populate (decisions);
+		} 
 	}
 
 	public void StartNextDay() {
 
-		//generate the decisions based on the current game state
-		DecisionSet decisions = GenerateDecisionSet ();
-		dayController.Populate (decisions);
-
 		//hide the map view / change to day
 		sceneController.ShowDay ();
-
 		isDay = true;
 		dayStart = Time.time;
 	}
