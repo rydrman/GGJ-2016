@@ -42,7 +42,7 @@ public static class NewspaperDecisions {
 				{
 					d.options[i] = new DecisionOption();
 					string[] parts = def[4 + i].Split(' ');
-					d.options[i].description = def[4 + i].Substring( def[4+i].Length - parts[parts.Length-1].Length );
+					d.options[i].description = def[4 + i].Substring( 0, def[4+i].Length - parts[parts.Length-1].Length-1 );
 					d.options[i].value = Int32.Parse(parts[parts.Length-1]);
 				}
 				allDecisions.Add(d);

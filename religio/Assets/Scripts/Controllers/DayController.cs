@@ -22,6 +22,7 @@ public class DayController : MonoBehaviour {
 		foreach( GameObject paper in decisions.newspapers ) {
 			paper.transform.SetParent (newspaperRoot);
 			paper.transform.position = newspaperRoot.position;
+			paper.transform.localRotation = newspaperRoot.localRotation;
 			paper.transform.position += d;
 			d += newspaperDelta;
 		}
