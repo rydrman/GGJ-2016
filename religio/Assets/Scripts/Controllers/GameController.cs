@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 	GameController() {
 	}
 
-	public void Awake() {
+	public void Start() {
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
 		DontDestroyOnLoad (cityController);
@@ -79,6 +79,9 @@ public class GameController : MonoBehaviour {
 		}
 		//TODO docets
 		//TODO momos
+
+		int delta = gameState.RecalculateFollowers ();
+		Debug.Log ("Change in followers: " + delta);
 
 		dayController.decisionSet.Destroy ();
 		sceneController.ShowNight ();
