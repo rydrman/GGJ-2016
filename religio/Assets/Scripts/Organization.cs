@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [Serializable]
 public class Organization : MonoBehaviour
 {
-	static System.Random rand = new System.Random ((int)DateTime.Now.Ticks);
+	static System.Random RAND = new System.Random ((int)DateTime.Now.Ticks);
 
 	new public string name = "default org name";
 	public DictionaryTopicInt m_stances;
@@ -21,7 +21,7 @@ public class Organization : MonoBehaviour
 
 	public void Randomize() {
 		foreach(Topic t in Enum.GetValues(typeof(Topic))) {
-			SetStance (t, rand.Next (200) - 100);
+			SetStance (t, RAND.Next (200) - 100);
 		}
 	}
 

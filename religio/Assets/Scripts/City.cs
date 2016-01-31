@@ -1,15 +1,13 @@
-﻿using System;
+﻿using UnityEngine;
+using Rand = System.Random;
+using System.Collections.Generic;
+using System;
+using System.IO;
 
 public class City : Organization {
-
-	public City(){
-	}
-
-	public City(string instName) {
-		name = instName;
-	}
-
+		
 	public void Start() {
+		name = CityNameList.GetName ();
 		Randomize ();
 	}
 }
