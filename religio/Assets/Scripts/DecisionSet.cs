@@ -1,8 +1,8 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class DecisionSet {
-	//List<Newspaper> newspapers;
-	//List<Memos> memos;
-	//List<Docets> docets;
+	public List<GameObject> newspapers = new List<GameObject> ();
+	public List<GameObject> memos = new List<GameObject> ();
+	public List<GameObject> docets = new List<GameObject> ();
 }
