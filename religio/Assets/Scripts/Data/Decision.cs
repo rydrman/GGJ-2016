@@ -5,12 +5,9 @@ using UnityEngine;
 public class Decision : MonoBehaviour {
 
 	public DecisionOption[] options = new DecisionOption[3];
+	public string title = "default title";
 
-	string m_title;
 	DecisionOption m_choice;
-
-	public Decision( ) {
-	}
 
 	public DecisionOption choice{ 
 		get {
@@ -19,7 +16,7 @@ public class Decision : MonoBehaviour {
 	}
 
 	public void Copy(Decision source) {
-		m_title = source.m_title;
+		title = source.title;
 		options = source.options;
 	}
 

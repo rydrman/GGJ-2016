@@ -12,16 +12,20 @@ public class GameController : MonoBehaviour {
 	public int dayLengthSeconds = 30;
 
 	float dayStart;
-	bool isDay;
+	bool isDay = false;
 
 	GameController() {
 	}
 
 	public void Start() {
-		StartNextDay ();
 	}
 
 	public void Update() {
+
+		if (!isDay) {
+			StartNextDay ();
+		}
+
 		if(Time.time > dayStart + dayLengthSeconds) {
 			EndDay ();
 		}
@@ -43,7 +47,7 @@ public class GameController : MonoBehaviour {
 	public void EndDay() {
 
 		//TODO update the game state based on the decision set actions
-
+		dayController.decisionSet.Destroy ();
 		sceneController.ShowNight ();
 		isDay = false;
 	}
