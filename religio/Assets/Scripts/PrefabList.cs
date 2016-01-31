@@ -21,7 +21,7 @@ public class PrefabList : MonoBehaviour {
 				//check for newspaper
 				if (assetPath.Contains (paperDecisionPrefabPath) &&
 					assetPath.Contains (".prefab")) {
-					Debug.Log(assetPath);
+					Debug.Log("Load Newspaper decision at " + assetPath);
 					GameObject obj = AssetDatabase.LoadAssetAtPath<GameObject> (assetPath);
 					NewspaperDecision decision = obj.GetComponent<NewspaperDecision> ();
 					paperDecisions.Add (decision);

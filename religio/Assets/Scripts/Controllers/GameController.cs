@@ -12,16 +12,20 @@ public class GameController : MonoBehaviour {
 	public int dayLengthSeconds = 30;
 
 	float dayStart;
-	bool isDay;
+	bool isDay = false;
 
 	GameController() {
 	}
 
 	public void Start() {
-		StartNextDay ();
 	}
 
 	public void Update() {
+
+		if (!isDay) {
+			StartNextDay ();
+		}
+
 		if(Time.time > dayStart + dayLengthSeconds) {
 			EndDay ();
 		}
