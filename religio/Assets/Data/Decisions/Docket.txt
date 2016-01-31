@@ -1,0 +1,25 @@
+﻿# Dialog Body
+# Follower F || Priest P 
+# TOPIC LETTER Education E,	Culture C, Diplomacy D, Business B,	Freedom F, Welfare W
+# MIN PROGRESSION (0-99)
+# MAX PROGRESSION (1-100)
+# OPTION TEXT int (ex I agree -10)
+# <- seperator
+This is dialogue for someone to talk tro you about and now that they are in front of you they expect a response
+Follower
+E
+0
+100
+Go Away! -20
+Sorry, not today -5
+Maybe later 5
+#
+This is dialogue for someone to talk tro you about and now that they are in front of you they expect a response
+Follower
+W
+0
+100
+Go Away! -20
+Sorry, not today -5
+Maybe later 5
+#

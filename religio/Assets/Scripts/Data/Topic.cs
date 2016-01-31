@@ -24,8 +24,8 @@ public static class TopicUtil {
 				return Topic.Business;
 			case 'F':
 				return Topic.Freedom;
-		case 'W':
-			return Topic.Welfare;
+			case 'W':
+				return Topic.Welfare;
 			default:
 				return Topic.Education;
 		}

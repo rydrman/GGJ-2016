@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour {
 				//no decision was made default to 'negative' effect
 				//relative to 1/10th your current stance
 				int effect = -gameState.player.GetStance(decision.definition.topic);
-				effect *= 0.1;
+				effect = (int)(effect * 0.1f);
 				gameState.player.ChangeStance (decision.definition.topic, effect);
 			}
 			else {
@@ -100,7 +100,25 @@ public class GameController : MonoBehaviour {
 			set.newspapers.Add (paper);
 		}
 
-		//TODO docets
+		//docets
+		foreach(City city in gameState.cities) {
+			//pick a topic at random
+			Topic topic = TopicUtil.Random ();
+			//Get a Random article related to the selected topic
+			DocketDecisionDefinition def = DocketDecisions.GetRandomForTopic (topic);
+			if(null == def) {
+				Debug.Log ("Could not find docket for topic: " + TopicUtil.ToString (topic));
+				continue;
+			}
+			GameObject docket = Instantiate (prefabs.docet);
+			Dictionary<string, string> values = new Dictionary<string, string>();
+			values["CityName"] = city.name;
+			values ["CharacterType"] = "" + def.personType;
+			values ["Topic"] = TopicUtil.ToString (topic);
+			def.org = city;
+			docket.GetComponent<DocketDecision>().Define(def, values);
+			set.docets.Add (docket);
+		}
 		//TODO memos
 		return set;
 	}
