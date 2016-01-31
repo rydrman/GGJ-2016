@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public struct DecisionDefinition {
+public class DecisionDefinition {
 	public string title;
 	public int minLevel;
 	public int maxLevel;
@@ -14,7 +14,7 @@ public struct DecisionDefinition {
 public class Decision : MonoBehaviour {
 
 	public DecisionDefinition definition;
-	public DecisionOption m_choice;
+	public DecisionOption m_choice = null;
 
 	public virtual void Define(DecisionDefinition def, Dictionary<string, string> values) {
 		definition = def;

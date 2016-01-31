@@ -59,7 +59,27 @@ public class GameController : MonoBehaviour {
 
 	public void EndDay() {
 
-		//TODO update the game state based on the decision set actions
+		//update the game state based on the decision set actions
+		DecisionSet decisions = dayController.decisionSet;
+		//newspapers
+		foreach(GameObject paper in decisions.newspapers) {
+			NewspaperDecision decision = paper.GetComponent<NewspaperDecision> ();
+			if(null == decision.choice) {
+				//no decision was made default to 'negative' effect
+				//relative to 1/10th your current stance
+				int effect = -gameState.player.GetStance(decision.definition.topic);
+				effect = (int)(effect * 0.1f);
+				gameState.player.ChangeStance (decision.definition.topic, effect);
+			}
+			else {
+				//enforce the result
+				gameState.player.ChangeStance (decision.definition.topic, decision.choice.value);
+			}
+
+		}
+		//TODO docets
+		//TODO momos
+
 		dayController.decisionSet.Destroy ();
 		sceneController.ShowNight ();
 		isDay = false;
@@ -68,14 +88,16 @@ public class GameController : MonoBehaviour {
 	DecisionSet GenerateDecisionSet() {
 		DecisionSet set = new DecisionSet ();
 
-
-		//TODO newspapers
+		//newspapers
 		foreach(City city in gameState.cities) {
 			//pick a topic at random
 			Topic topic = TopicUtil.Random ();
-			//get the value of that topic
-			//for now pick a random newspaper for each city
-			DecisionDefinition def = NewspaperDecisions.GetRandom ();
+			//Get a Random article related to the selected topic
+			DecisionDefinition def = NewspaperDecisions.GetRandomForTopic (topic);
+			if(null == def) {
+				Debug.Log ("Could not find article for topic: " + TopicUtil.ToString (topic));
+				continue;
+			}
 			GameObject paper = Instantiate (prefabs.newspaper);
 			Dictionary<string, string> values = new Dictionary<string, string>();
 			values["CityName"] = city.name;
@@ -84,7 +106,25 @@ public class GameController : MonoBehaviour {
 			set.newspapers.Add (paper);
 		}
 
-		//TODO docets
+		//docets
+		foreach(City city in gameState.cities) {
+			//pick a topic at random
+			Topic topic = TopicUtil.Random ();
+			//Get a Random article related to the selected topic
+			DocketDecisionDefinition def = DocketDecisions.GetRandomForTopic (topic);
+			if(null == def) {
+				Debug.Log ("Could not find docket for topic: " + TopicUtil.ToString (topic));
+				continue;
+			}
+			GameObject docket = Instantiate (prefabs.docet);
+			Dictionary<string, string> values = new Dictionary<string, string>();
+			values["CityName"] = city.name;
+			values ["CharacterType"] = "" + def.personType;
+			values ["Topic"] = TopicUtil.ToString (topic);
+			def.org = city;
+			docket.GetComponent<DocketDecision>().Define(def, values);
+			set.docets.Add (docket);
+		}
 		//TODO memos
 		return set;
 	}
