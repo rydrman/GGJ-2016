@@ -10,9 +10,15 @@ public class City : Organization {
 	public int population;
 		
 	public void Start() {
-		population = UnityEngine.Random.Range(10000, 200000);
-		name = StringListReader.GetRandom ("CityNames");
+
+		// Sets up stance
 		Randomize ();
+
+		population = UnityEngine.Random.Range(10000, 200000);
+
+		// Sets city name
+		name = StringListReader.GetRandom ("CityNames");
 		gameObject.GetComponentInChildren<Text>().text = name;
+
 	}
 }
