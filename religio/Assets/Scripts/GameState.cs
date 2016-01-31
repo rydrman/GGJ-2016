@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System;
 
 [System.Serializable]
 public class GameState : MonoBehaviour {
+
+	[System.NonSerialized]
 	public Organization player;
-	public List<City> cities;
+
+	public City[] cities;
 	//public List<Organization> corporations;
 }
