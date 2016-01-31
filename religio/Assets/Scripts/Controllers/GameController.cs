@@ -98,12 +98,14 @@ public class GameController : MonoBehaviour {
 
 	public void ToggleMap() {
 		if (!isMap) {
+			RenderSettings.fog = false;
 			mapObject.SetActive (true);
 			mapCamera.SetActive(true);
 			mainCamera.SetActive(false);
 			isMap = true;
 		}
 		else {
+			RenderSettings.fog = true;
 			mapObject.SetActive (false);
 			mainCamera.SetActive(true);
 			mapCamera.SetActive(false);
