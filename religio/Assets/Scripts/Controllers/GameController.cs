@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -16,10 +17,17 @@ public class GameController : MonoBehaviour {
 
 	GameObject mainCamera;
 	GameObject mapCamera;
+	public GameObject transitionUI;
 
-	float dayStart;
+	float lastChange;
 	bool isDay = false;
 	bool isMap = false;
+
+	bool isStartCanvas = false;
+	bool isEndCanvas = false;
+
+	int currentLevel = 0;
+	bool levelLoading = true;
 
 	GameController() {
 	}
@@ -30,6 +38,7 @@ public class GameController : MonoBehaviour {
 		mainCamera = GameObject.Find ("Main Camera");
 
 		DontDestroyOnLoad (GameObject.Find ("EventSystem"));
+		DontDestroyOnLoad (transitionUI);
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
 		DontDestroyOnLoad (dayController);
@@ -43,8 +52,28 @@ public class GameController : MonoBehaviour {
 
 	public void Update() {
 
-		if(isDay && Time.time > dayStart + dayLengthSeconds) {
+		if(levelLoading) {
+			return;
+		}
+		if(isStartCanvas && Time.time > lastChange + 3) {
+			BeginDay ();
+			transitionUI.GetComponent<TransitionUIController> ().InactiveAll ();
+			isStartCanvas = false;
+			lastChange = Time.time;
+		}
+
+		else if(isDay && Time.time > lastChange + dayLengthSeconds) {
 			EndDay ();
+			transitionUI.GetComponent<TransitionUIController> ().ShowEndDay ();
+			isEndCanvas = true;
+			lastChange = Time.time;
+		}
+
+		else if(isEndCanvas && Time.time > lastChange + 3) {
+			transitionUI.GetComponent<TransitionUIController> ().InactiveAll ();
+			transitionUI.GetComponent<TransitionUIController> ().ShowNextButton ();
+			isEndCanvas = false;
+			lastChange = Time.time;
 		}
 
 		if (isDay && Input.GetKeyDown(KeyCode.Tab)) {
@@ -54,20 +83,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void BeginGame() {
-		sceneController.dayScene = 1;
-		StartNextDay();
+		StartNextDay(1);
 	}
 
 	public void OnLevelWasLoaded(int level) {
+		currentLevel = level;
+		levelLoading = false;
 		mainCamera = GameObject.Find ("Main Camera");
-
-		if (isDay == true) {
-			//generate the decisions based on the current game state
-			DecisionSet decisions = GenerateDecisionSet ();
-			
-			// populate the scene with decisions
-			dayController.Populate (decisions);
-		} 
 	}
 	public void ToggleMap(bool newState) {
 		isMap = !newState;
@@ -89,13 +111,26 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void StartNextDay() {
+	public void StartNextDay(int level) {
+		if(level != currentLevel){
+			SceneManager.LoadScene (level);
+			levelLoading = true;
+		}
+		ToggleMap (true);
+		transitionUI.GetComponent<TransitionUIController> ().ShowStartDay ();
+		lastChange = Time.time;
+		isStartCanvas = true;
+	}
 
-		//hide the map view / change to day
-		sceneController.ShowDay ();
+	void BeginDay() {
+		//generate the decisions based on the current game state
+		DecisionSet decisions = GenerateDecisionSet ();
+
+		// populate the scene with decisions
+		dayController.Populate (decisions);
+
 		isDay = true;
 		ToggleMap (false);
-		dayStart = Time.time;
 	}
 
 	public void EndDay() {
@@ -121,7 +156,7 @@ public class GameController : MonoBehaviour {
 		}
 		//docets
 		foreach(GameObject docet in decisions.docets) {
-			NewspaperDecision decision = docet.GetComponent<NewspaperDecision> ();
+			DocketDecision decision = docet.GetComponent<DocketDecision> ();
 			if(null == decision.choice) {
 				//no decision was made default to 'negative' effect
 				//relative to 1/10th your current stance

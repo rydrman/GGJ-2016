@@ -43,10 +43,13 @@ public class DocketDecision : Decision {
 		if(buttons.Count() != 3) {
 			Debug.Log ("Why are there not 3 buttons on docet dialog children?");
 		}
-		for(int i = 0; i < 3; ++i){
-			buttons[i].gameObject.GetComponentInChildren<Text> ().text = definition.options[i].description;
-			buttons[i].onClick.AddListener (() => ButtonClicked (i));
-			}
+
+		buttons[0].gameObject.GetComponentInChildren<Text> ().text = definition.options[0].description;
+		buttons[0].onClick.AddListener (() => ButtonClicked (0));
+		buttons[1].gameObject.GetComponentInChildren<Text> ().text = definition.options[1].description;
+		buttons[1].onClick.AddListener (() => ButtonClicked (1));
+		buttons[2].gameObject.GetComponentInChildren<Text> ().text = definition.options[2].description;
+		buttons[2].onClick.AddListener (() => ButtonClicked (2));
 	}
 
 	public void CharacterLeave() {
