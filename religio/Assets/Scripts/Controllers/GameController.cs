@@ -7,8 +7,9 @@ public class GameController : MonoBehaviour {
 
 	public PrefabList prefabs;
 	public GameState gameState;
-	public DayController dayController;
-	public SceneController sceneController; 
+	public SceneController sceneController;
+	public DayController dayController; 
+	public CityController cityController;
 
 	public int dayLengthSeconds = 30;
 
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour {
 	public void Awake() {
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
+		DontDestroyOnLoad (cityController);
 		DontDestroyOnLoad (gameState);
 		DontDestroyOnLoad (prefabs);
 	}

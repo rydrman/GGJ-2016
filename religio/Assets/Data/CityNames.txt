@@ -1,2 +1,82 @@
-MyCity1
-MyCity2
+Shwartzville
+Yabutstan
+Donanation
+Big Town
+Little Town
+Spencerville
+Bromba
+Altnation
+Bumpsville
+Cridicha
+Drumsummer
+Eganville
+Frump Town
+Greatscott
+Hillcrest
+Imp
+Juxville
+Karfast
+Looytown
+Moonshadow
+Neilson
+Opii
+Preptown
+Qualtown
+Rictville
+Summersby
+Tri-County
+Unisville
+Villa Capricorn
+Willowson
+Yuppysville
+Zootown
+Bluejacket
+Blue Ridge Summit
+Ocean Pines
+Milliken
+Baileyville
+Cypress Lake
+Wesley Chapel
+Fernan Lake Village
+Wallsburg
+Pine Knot
+Coalinga
+Pennsbury Village
+Kipton
+Wolverine
+Ashland City
+Belton
+Bayou La Batre
+Twentynine Palms
+Eolia
+Briarwood
+Oklee
+East Port Orchard
+McGregor
+Tavernier
+Hiller
+Baiting Hollow
+Cibecue
+Waukau
+Redings Mill
+Fairview Beach
+Newfields
+North Troy
+Ipava
+Tarentum
+Pen Argyl
+Epes
+Washoe Valley
+Capitola
+Neptune City
+Coral Springs
+East Glenville
+Kings Mountain
+Litchfield
+Pottawattamie Park
+Osprey
+Nerstrand
+Geuda Springs
+Spring Valley
+New Edinburg
+Painesville

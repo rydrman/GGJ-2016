@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CityController : MonoBehaviour {
 
+	public GameState gameSate;
+
 	GameObject cityMenu;
 	MapCameraController mapCamera;
 	Vector3 cameraTargetPosition;
@@ -12,11 +14,6 @@ public class CityController : MonoBehaviour {
 		cityMenu = GameObject.Find("CityMenu");
 		mapCamera = Camera.main.GetComponent<MapCameraController> ();
 		cameraTargetPosition = new Vector3 (gameObject.transform.position.x, Camera.main.transform.position.y, gameObject.transform.position.z-30);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	void OnMouseDown () {

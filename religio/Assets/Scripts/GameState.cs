@@ -14,8 +14,5 @@ public class GameState : MonoBehaviour {
 	}
 
 	public void Start() {
-		foreach(City c in cities) {
-			Debug.Log (c);
-		}
 	}
 }
