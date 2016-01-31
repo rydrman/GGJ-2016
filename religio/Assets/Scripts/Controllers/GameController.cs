@@ -17,7 +17,11 @@ public class GameController : MonoBehaviour {
 	GameController() {
 	}
 
-	public void Start() {
+	public void Awake() {
+		DontDestroyOnLoad (this);
+		DontDestroyOnLoad (sceneController);
+		DontDestroyOnLoad (state);
+		DontDestroyOnLoad (prefabs);
 	}
 
 	public void Update() {

@@ -2,7 +2,8 @@
 
 [System.Serializable]
 public class SceneController : MonoBehaviour {
-	SceneController(){}
+	SceneController(){
+	}
 
 	public void ShowNight() {
 		//TODO switch the scene view
