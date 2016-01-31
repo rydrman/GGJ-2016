@@ -10,6 +10,9 @@ public class GameState : MonoBehaviour {
 	public City[] cities;
 	//public List<Organization> corporations;
 
+	public GameState() {
+	}
+
 	public void Start() {
 		foreach(City c in cities) {
 			Debug.Log (c);
