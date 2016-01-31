@@ -64,7 +64,7 @@ public class Organization : MonoBehaviour
 			" Culture: " + 	m_stances[Topic.Culture] +
 			" Diplomacy: " + m_stances[Topic.Diplomacy] +
 			" Education: " + m_stances[Topic.Education] +
-			" Enterprise: "+ m_stances[Topic.Enterprise] +
+			" Enterprise: "+ m_stances[Topic.Business] +
 			" Freedom: " +	m_stances[Topic.Freedom] +
 			" Welfare: " + 	m_stances[Topic.Welfare]
 		);

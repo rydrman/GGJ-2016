@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class GameController : MonoBehaviour {
 
 	public PrefabList prefabs;
-	public GameState state;
+	public GameState gameState;
 	public DayController dayController;
 	public SceneController sceneController; 
 
@@ -20,7 +21,7 @@ public class GameController : MonoBehaviour {
 	public void Awake() {
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
-		DontDestroyOnLoad (state);
+		DontDestroyOnLoad (gameState);
 		DontDestroyOnLoad (prefabs);
 	}
 
@@ -58,10 +59,16 @@ public class GameController : MonoBehaviour {
 
 	DecisionSet GenerateDecisionSet() {
 		DecisionSet set = new DecisionSet ();
+
+
 		//TODO newspapers
-		foreach(NewspaperDecision decision in prefabs.paperDecisions) {
+		foreach(City city in gameState.cities) {
+			//for now pick a random newspaper for each city
+			DecisionDefinition def = NewspaperDecisions.GetRandom ();
 			GameObject paper = Instantiate (prefabs.newspaper);
-			paper.GetComponent<NewspaperDecision>().Copy(decision);
+			Dictionary<string, string> values = new Dictionary<string, string>();
+			values["CityName"] = city.name;
+			paper.GetComponent<NewspaperDecision>().Define(def, values);
 			set.newspapers.Add (paper);
 		}
 

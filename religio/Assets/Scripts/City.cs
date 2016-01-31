@@ -7,7 +7,7 @@ using System.IO;
 public class City : Organization {
 		
 	public void Start() {
-		name = CityNameList.GetName ();
+		name = StringListReader.GetRandom ("CityNames");
 		Randomize ();
 	}
 }

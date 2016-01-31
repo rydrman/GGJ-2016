@@ -1,0 +1,14 @@
+﻿# ARTICLE TITLE
+# TOPIC LETTER Education E,	Culture C, Diplomacy D, Business B,	Freedom F, Welfare W
+# MIN PROGRESSION (0-99)
+# MAX PROGRESSION (1-100)
+# OPTION TEXT int (ex I agree -10)
+# <- seperator
+From [CityName] about [PersonName]
+E
+0
+100
+I Agree 10
+No Comment 0
+That's dumb -10
+#
