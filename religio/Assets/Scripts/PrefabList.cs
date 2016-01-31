@@ -7,4 +7,5 @@ public class PrefabList : MonoBehaviour {
 	public GameObject newspaper;
 	public GameObject docet;
 	public GameObject memo;
+
 }

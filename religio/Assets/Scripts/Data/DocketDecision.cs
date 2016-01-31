@@ -11,9 +11,13 @@ public class DocketDecisionDefinition : DecisionDefinition {
 
 public class DocketDecision : Decision {
 
-	public GameObject dialog;
-	public GameObject personPrefab;
+	public GameObject dialogPrefab;
+	public GameObject characterPrefab;
 	public Button accept;
+
+	GameObject dialog;
+	GameObject character;
+
 
 	new public DocketDecisionDefinition definition {
 		get {
@@ -27,7 +31,32 @@ public class DocketDecision : Decision {
 
 	void acceptClick() {
 		accept.interactable = false;
-		//TODO open stuff and people stuff
+		//put away the docet
+		ObjectInteraction interaction = GetComponent<ObjectInteraction> ();
+		interaction.Defocus ();
+
+		//create a character thing
+		character = Instantiate (characterPrefab);
+		dialog = Instantiate (dialogPrefab);
+		dialog.GetComponent<Document> ().SetBody (definition.title);
+		Button[] buttons = dialog.GetComponentsInChildren<Button> ();
+		if(buttons.Count() != 3) {
+			Debug.Log ("Why are there not 3 buttons on docet dialog children?");
+		}
+		for(int i = 0; i < 3; ++i){
+			buttons[i].gameObject.GetComponentInChildren<Text> ().text = definition.options[i].description;
+			buttons[i].onClick.AddListener (() => ButtonClicked (i));
+			}
+	}
+
+	public void CharacterLeave() {
+		//TODO make character leave and destroy when finished
+	}
+
+	public void ButtonClicked(int index) {
+		Destroy (dialog);
+		CharacterLeave ();
+		choice = definition.options [index];
 	}
 		
 	public void Define(DocketDecisionDefinition def, Dictionary<string, string> values) {
