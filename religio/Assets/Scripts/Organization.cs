@@ -1,17 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class Organization : MonoBehaviour
 {
-	
-	Dictionary<Topic, int> m_stances;
+	public DictionaryTopicInt m_stances;
 
 	public Organization ()
 	{
-		m_stances = new Dictionary<Topic, int> ();
+		m_stances = new DictionaryTopicInt();
 		foreach(Topic t in Enum.GetValues(typeof(Topic))){
 			m_stances [t] = 0;
 		}
@@ -31,5 +30,3 @@ public class Organization : MonoBehaviour
 		return value;
 	}
 }
-
-
