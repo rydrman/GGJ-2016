@@ -38,7 +38,7 @@ public class MapCameraController : MonoBehaviour {
 		// Zoom in and out
 		targetZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomStep;
 		targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
-		Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, targetZoom, ref zoomVel, zoomDamp);
+		TriggerZoom (targetZoom);
 
 		// Move Left and Right
 		if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
@@ -53,8 +53,17 @@ public class MapCameraController : MonoBehaviour {
 		if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
 			targetPosition.z -= moveStep;
 		}
+		TriggerMove (targetPosition);
 
-		Camera.main.transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * moveVel);
+	}
 
+	public void TriggerZoom( float target ) {
+		Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, target, ref zoomVel, zoomDamp);
+		targetZoom = target;
+	}
+
+	public void TriggerMove( Vector3 target ) {
+		Camera.main.transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * moveVel);
+		targetPosition = target;
 	}
 }
