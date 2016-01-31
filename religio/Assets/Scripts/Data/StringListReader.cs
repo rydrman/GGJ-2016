@@ -8,7 +8,6 @@ public static class StringListReader {
 
 	static Dictionary<string, string[]> files = new Dictionary<string, string[]>();
 
-	static List<string> NAMES = new List<string>();
 	static Rand RAND = new Rand ((int)DateTime.Now.Ticks);
 
 	static string[] Load(string file) {

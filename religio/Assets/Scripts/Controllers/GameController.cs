@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour {
 
 	public void OnLevelWasLoaded(int level) {
 		mainCamera = GameObject.Find ("Main Camera");
-		ToggleMap (false);
+
 		if (isDay == true) {
 			//generate the decisions based on the current game state
 			DecisionSet decisions = GenerateDecisionSet ();

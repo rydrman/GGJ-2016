@@ -62,13 +62,11 @@ public class ObjectInteraction : MonoBehaviour {
 	}
 
 	public void Focus () {
-		Debug.Log("Clicked.");
 		m_focused = true;
 		m_anim.SetBool("focused", m_focused);
 	}
 
 	public void Defocus () {
-		Debug.Log("Clicked negation.");
 		m_focused = false;
 		m_anim.SetBool("focused", m_focused);
 	}
