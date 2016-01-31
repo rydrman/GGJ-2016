@@ -23,7 +23,6 @@ public static class NewspaperDecisions {
 			return null;
 		}
 		return options [UnityEngine.Random.Range(0, options.Count)];
-
 	}
 
 	static void Load() {

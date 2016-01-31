@@ -14,7 +14,7 @@ public class DecisionDefinition {
 public class Decision : MonoBehaviour {
 
 	public DecisionDefinition definition;
-	public DecisionOption m_choice;
+	public DecisionOption m_choice = null;
 
 	public virtual void Define(DecisionDefinition def, Dictionary<string, string> values) {
 		definition = def;

@@ -53,7 +53,26 @@ public class GameController : MonoBehaviour {
 
 	public void EndDay() {
 
-		//TODO update the game state based on the decision set actions
+		//update the game state based on the decision set actions
+		DecisionSet decisions = dayController.decisionSet;
+		//newspapers
+		foreach(NewspaperDecision decision in decisions.newspapers) {
+			if(null == decision.choice) {
+				//no decision was made default to 'negative' effect
+				//relative to 1/10th your current stance
+				int effect = -gameState.player.GetStance(decision.definition.topic);
+				effect *= 0.1;
+				gameState.player.ChangeStance (decision.definition.topic, effect);
+			}
+			else {
+				//enforce the result
+				gameState.player.ChangeStance (decision.definition.topic, decision.choice.value);
+			}
+
+		}
+		//TODO docets
+		//TODO momos
+
 		dayController.decisionSet.Destroy ();
 		sceneController.ShowNight ();
 		isDay = false;
@@ -62,8 +81,7 @@ public class GameController : MonoBehaviour {
 	DecisionSet GenerateDecisionSet() {
 		DecisionSet set = new DecisionSet ();
 
-
-		//TODO newspapers
+		//newspapers
 		foreach(City city in gameState.cities) {
 			//pick a topic at random
 			Topic topic = TopicUtil.Random ();
