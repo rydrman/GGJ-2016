@@ -53,6 +53,7 @@ public class DayController : MonoBehaviour {
 		foreach( GameObject docet in decisions.docets ) {
 			docet.transform.SetParent (docetRoot);
 			docet.transform.position = docetRoot.position;
+			docet.transform.localRotation = docetRoot.localRotation;
 			docet.transform.position += d;
 			d += docetDelta;
 		}
