@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class ClickSender : MonoBehaviour {
@@ -24,14 +25,16 @@ public class ClickSender : MonoBehaviour {
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 		m_clickedon = false;
-		Physics.Raycast(ray, out hit, Mathf.Infinity);
-		foreach (Collider collider in m_interactions.Colliders()) {
-			if (hit.collider == collider)
-				m_clickedon = true;
-		}
+		if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverEventSystemObject()) {
+			Physics.Raycast(ray, out hit, Mathf.Infinity);
+			foreach (Collider collider in m_interactions.Colliders()) {
+				if (hit.collider == collider)
+					m_clickedon = true;
+			}
 
-		if (Input.GetMouseButtonDown(0) && !k_negate && !m_clickedon)
-            m_interactions.Defocus();
+			if (Input.GetMouseButtonDown(0) && !k_negate && !m_clickedon)
+	            m_interactions.Defocus();
+		}
 	}
 
 	void OnMouseDown () {
