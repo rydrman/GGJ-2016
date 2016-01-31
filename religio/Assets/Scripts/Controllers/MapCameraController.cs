@@ -5,8 +5,8 @@ using System.Collections;
 [Serializable]
 public class MapCameraController : MonoBehaviour {
 
-	public float moveStep = 10.0f;
-	public float moveVel = 2.0f;
+	public float moveStep = 1.5f;
+	public float moveVel = 1.0f;
 	private Vector3 targetPosition;
 
 	public float minZoom = 50.0f;
