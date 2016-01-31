@@ -10,7 +10,7 @@ public class ObjectInteraction : MonoBehaviour {
 
 	public Animator m_anim;
 	public GameObject m_root;
-	public Collider m_childcollider;
+	public Collider[] m_childcolliders;
 	public Transform m_focalpoint;
 	public Vector3 m_restpos;
 	public bool m_focused;
@@ -21,8 +21,8 @@ public class ObjectInteraction : MonoBehaviour {
 		m_root = transform.Find("Root").gameObject;
 		m_anim = m_root.GetComponent<Animator>();
 		m_focalpoint = GameObject.Find("FocalPoint").transform;
-		m_childcollider = (m_root.transform.GetChild(0)
-						   .gameObject.GetComponent<Collider>());
+		m_childcollider = (m_root.GetComponentsInChildren<Collider>());
+						   // .gameObject.GetComponent<Collider>());
 		m_focused = false;
 	}
 
@@ -42,6 +42,10 @@ public class ObjectInteraction : MonoBehaviour {
 				transform.position,
 				m_restpos,
 				k_damping);
+	}
+
+	public Collider[] Colliders() {
+		return m_childcolliders;
 	}
 
 	public void Focus () {
