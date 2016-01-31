@@ -56,7 +56,8 @@ public class GameController : MonoBehaviour {
 		//update the game state based on the decision set actions
 		DecisionSet decisions = dayController.decisionSet;
 		//newspapers
-		foreach(NewspaperDecision decision in decisions.newspapers) {
+		foreach(GameObject paper in decisions.newspapers) {
+			NewspaperDecision decision = paper.GetComponent<NewspaperDecision> ();
 			if(null == decision.choice) {
 				//no decision was made default to 'negative' effect
 				//relative to 1/10th your current stance
