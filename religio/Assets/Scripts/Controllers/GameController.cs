@@ -10,29 +10,46 @@ public class GameController : MonoBehaviour {
 	public SceneController sceneController;
 	public DayController dayController; 
 	public CityController cityController;
+	public GameObject mapObject;
 
 	public int dayLengthSeconds = 30;
 
+	GameObject mainCamera;
+	GameObject mapCamera;
+
 	float dayStart;
 	bool isDay = false;
-
+	bool isMap = false;
 
 	GameController() {
 	}
 
 	public void Start() {
+
+		mapCamera = GameObject.Find ("MapCamera");
+		mainCamera = GameObject.Find ("Main Camera");
+
+		DontDestroyOnLoad (GameObject.Find ("EventSystem"));
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (sceneController);
 		DontDestroyOnLoad (dayController);
 		DontDestroyOnLoad (cityController);
+		DontDestroyOnLoad (mapObject);
 		DontDestroyOnLoad (gameState);
 		DontDestroyOnLoad (prefabs);
+		DontDestroyOnLoad (mapCamera);
+		ToggleMap (false);
 	}
 
 	public void Update() {
 
-		if(Time.time > dayStart + dayLengthSeconds) {
+		if(isDay && Time.time > dayStart + dayLengthSeconds) {
 			EndDay ();
+		}
+
+		if (isDay && Input.GetKeyDown(KeyCode.Tab)) {
+			Debug.Log ("toggle map");
+			ToggleMap ();
 		}
 	}
 
@@ -42,6 +59,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void OnLevelWasLoaded(int level) {
+		mainCamera = GameObject.Find ("Main Camera");
+		ToggleMap (false);
 		if (isDay == true) {
 			//generate the decisions based on the current game state
 			DecisionSet decisions = GenerateDecisionSet ();
@@ -50,17 +69,38 @@ public class GameController : MonoBehaviour {
 			dayController.Populate (decisions);
 		} 
 	}
+	public void ToggleMap(bool newState) {
+		isMap = !newState;
+		ToggleMap ();
+	}
+
+	public void ToggleMap() {
+		if (!isMap) {
+			mapObject.SetActive (true);
+			mapCamera.SetActive(true);
+			mainCamera.SetActive(false);
+			isMap = true;
+		}
+		else {
+			mapObject.SetActive (false);
+			mainCamera.SetActive(true);
+			mapCamera.SetActive(false);
+			isMap = false;
+		}
+	}
 
 	public void StartNextDay() {
 
 		//hide the map view / change to day
 		sceneController.ShowDay ();
 		isDay = true;
+		ToggleMap (false);
 		dayStart = Time.time;
 	}
 
 	public void EndDay() {
 
+		isDay = false;
 		//update the game state based on the decision set actions
 		DecisionSet decisions = dayController.decisionSet;
 		//newspapers
@@ -79,15 +119,30 @@ public class GameController : MonoBehaviour {
 			}
 
 		}
-		//TODO docets
+		//docets
+		foreach(GameObject docet in decisions.docets) {
+			NewspaperDecision decision = docet.GetComponent<NewspaperDecision> ();
+			if(null == decision.choice) {
+				//no decision was made default to 'negative' effect
+				//relative to 1/10th your current stance
+				int effect = -gameState.player.GetStance(decision.definition.topic);
+				effect = (int)(effect * 0.1f);
+				gameState.player.ChangeStance (decision.definition.topic, effect);
+			}
+			else {
+				//enforce the result
+				gameState.player.ChangeStance (decision.definition.topic, decision.choice.value);
+			}
+
+		}
 		//TODO momos
 
 		int delta = gameState.RecalculateFollowers ();
 		Debug.Log ("Change in followers: " + delta);
 
 		dayController.decisionSet.Destroy ();
-		sceneController.ShowNight ();
-		isDay = false;
+		ToggleMap (true);
+		//sceneController.ShowNight ();
 	}
 
 	DecisionSet GenerateDecisionSet() {
