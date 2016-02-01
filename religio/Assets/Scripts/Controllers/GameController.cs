@@ -90,6 +90,8 @@ public class GameController : MonoBehaviour {
 		currentLevel = level;
 		levelLoading = false;
 		mainCamera = GameObject.Find ("Main Camera");
+		GameObject scene = GameObject.Find("DayScene");
+		if (null != scene) scene.GetComponent<SceneHotkeys>().Randomize();
 	}
 	public void ToggleMap(bool newState) {
 		isMap = !newState;

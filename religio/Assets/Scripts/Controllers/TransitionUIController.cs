@@ -21,11 +21,13 @@ class TransitionUIController : MonoBehaviour {
 	public void ShowStartDay() {
 		InactiveAll();
 		startDayCanvas.SetActive(true);
+		GetComponent<SoundSampler>().PlaySound();
 	}
 
 	public void ShowEndDay() {
 		InactiveAll();
 		endDayCanvas.SetActive(true);
+		GetComponent<SoundSampler>().PlaySound();
 	}
 
 	public void ShowNextButton() {

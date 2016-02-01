@@ -64,10 +64,14 @@ public class ObjectInteraction : MonoBehaviour {
 	public void Focus () {
 		m_focused = true;
 		m_anim.SetBool("focused", m_focused);
+		// FIXME: only call when component exists
+		GetComponent<SoundSampler>().PlaySound();
 	}
 
 	public void Defocus () {
 		m_focused = false;
 		m_anim.SetBool("focused", m_focused);
+		// FIXME: only call when component exists
+		GetComponent<SoundSampler>().PlaySound();
 	}
 }
