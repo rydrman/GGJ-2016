@@ -34,6 +34,7 @@ public class DayController : MonoBehaviour {
 			paper.transform.SetParent (newspaperRoot);
 			paper.transform.position = newspaperRoot.position;
 			paper.transform.localRotation = newspaperRoot.localRotation;
+			paper.transform.localScale = newspaperRoot.localScale;
 			paper.transform.position += d;
 			d += newspaperDelta;
 		}
@@ -57,6 +58,7 @@ public class DayController : MonoBehaviour {
 			docet.transform.SetParent (docetRoot);
 			docet.transform.position = docetRoot.position;
 			docet.transform.localRotation = docetRoot.localRotation;
+			docet.transform.localScale = docetRoot.localScale;
 			docet.transform.position += d;
 			d += docetDelta;
 		}

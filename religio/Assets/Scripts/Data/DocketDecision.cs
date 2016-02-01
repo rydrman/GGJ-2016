@@ -37,6 +37,10 @@ public class DocketDecision : Decision {
 
 		//create a character thing
 		character = Instantiate (characterPrefab);
+		character.transform.position = GameObject.Find("CharacterRoot").transform.position;
+		character.transform.rotation = GameObject.Find("CharacterRoot").transform.rotation;
+		character.transform.localScale = GameObject.Find("CharacterRoot").transform.localScale;
+		character.GetComponent<ReligioCharacter>().Enter();
 		dialog = Instantiate (dialogPrefab);
 		dialog.GetComponent<Document> ().SetBody (definition.title);
 		Button[] buttons = dialog.GetComponentsInChildren<Button> ();
@@ -54,6 +58,7 @@ public class DocketDecision : Decision {
 
 	public void CharacterLeave() {
 		//TODO make character leave and destroy when finished
+		character.GetComponent<ReligioCharacter>().CompleteInteraction();
 	}
 
 	public void ButtonClicked(int index) {
